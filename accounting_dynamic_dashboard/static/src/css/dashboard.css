@@ -1,0 +1,53 @@
+/* Make sure the kanban view has enough top padding to fit the title, and is relative for absolute positioning */
+.ag_custom_dashboard_kanban {
+    position: relative !important;
+    padding-top: 80px !important;
+}
+
+/* Inject the title using an absolutely positioned pseudo-element so it doesn't break the CSS Grid */
+.ag_custom_dashboard_kanban::before {
+    content: "Accounting Dashboard";
+    position: absolute;
+    top: 15px;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: #016b8b;
+    pointer-events: none; /* Make sure it doesn't block clicks */
+}
+
+/* Hide the small action name (breadcrumb) to the left of the search bar */
+.o_action_manager:has(.ag_custom_dashboard_kanban) .o_breadcrumb,
+.o_action_manager:has(.ag_custom_dashboard_kanban) .breadcrumb {
+    display: none !important;
+}
+
+/* --- Premium Kanban Card Styling --- */
+.ag_custom_dashboard_kanban .o_kanban_record {
+    border-radius: 12px !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06) !important;
+    border: 1px solid rgba(0,0,0,0.03) !important;
+    transition: transform 0.2s ease, box-shadow 0.2s ease !important;
+    background-color: #ffffff !important;
+}
+
+.ag_custom_dashboard_kanban .o_kanban_record:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 25px rgba(1, 107, 139, 0.12) !important;
+}
+
+/* --- Beautiful Graph Section --- */
+.ag_custom_dashboard_kanban .o_kanban_graph_section {
+    background: linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba(1, 107, 139, 0.08) 100%) !important;
+    border-top: 1px dashed rgba(1, 107, 139, 0.15) !important;
+    margin-top: 15px !important;
+    padding-top: 5px !important;
+    border-radius: 0 0 12px 12px !important;
+}
+
+/* Optional: Make the text inside graph section a bit styled */
+.ag_custom_dashboard_kanban .o_kanban_graph_section canvas {
+    opacity: 0.85; /* Slightly fade the graph to blend with the premium background */
+}
